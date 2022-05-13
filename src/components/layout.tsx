@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import Head from "next/head";
 
 export const metadata = {
@@ -8,22 +8,7 @@ export const metadata = {
   domain: "https://something.com",
 };
 
-export const Layout: FC = ({ children }) => {
-  // Uncomment this part to switch between desktop & mobile nav
-  // const [windowSize, setWindowSize] = useState<number>(0);
-
-  // useEffect(() => {
-  //   setWindowSize(window.innerWidth);
-  //   const resizeHandler = () => {
-  //     setWindowSize(window.innerWidth);
-  //   };
-  //   window.addEventListener("resize", resizeHandler);
-
-  //   return () => {
-  //     window.removeEventListener("resize", resizeHandler);
-  //   };
-  // }, []);
-
+export const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <>
       <Head>

@@ -10,19 +10,15 @@ export const NAV_LINKS: NavbarItemProps[] = [
     name: "home",
   },
   {
-    href: "/about",
-    name: "about",
+    href: "/page-1",
+    name: "page 1",
   },
   {
-    href: "/projects",
-    name: "projects",
+    href: "/page-2",
+    name: "page 2",
   },
   {
-    href: "/blog",
-    name: "blog",
-  },
-  {
-    href: "/contact",
-    name: "contact",
+    href: "/page-3",
+    name: "page 3",
   },
 ];

@@ -1,5 +1,6 @@
 import { FC, ReactNode } from "react";
 import Head from "next/head";
+import { DesktopNav } from "./nav/DesktopNav";
 
 export const metadata = {
   title: "",
@@ -36,7 +37,10 @@ export const Layout: FC<{ children: ReactNode }> = ({ children }) => {
         <link rel="apple-touch-icon" href="/logo192.png" />
       </Head>
 
-      <div id="App">{children}</div>
+      <div id="App">
+        <DesktopNav />
+        {children}
+      </div>
     </>
   );
 };

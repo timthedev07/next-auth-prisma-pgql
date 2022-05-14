@@ -1,5 +1,4 @@
 import { NextPage, GetServerSideProps } from "next";
-import { Session } from "next-auth";
 import { BuiltInProviderType } from "next-auth/providers";
 import {
   ClientSafeProvider,
@@ -15,7 +14,6 @@ interface Props {
     LiteralUnion<BuiltInProviderType, string>,
     ClientSafeProvider
   > | null;
-  session: Session | null;
 }
 
 const SignIn: NextPage<Props> = ({ providers }) => {
@@ -47,7 +45,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   return {
     props: {
       providers: await getProviders(),
-      session,
     },
     redirect:
       session && session.user

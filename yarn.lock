@@ -7273,10 +7273,10 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-react-auth-provider-buttons@^0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/react-auth-provider-buttons/-/react-auth-provider-buttons-0.0.0.tgz#ac2003d64b52bb696402a3aec2db8ca8690b30d3"
-  integrity sha512-DAq8IgH65t5ogKCVXyc2gOcO7ygTsByirowQhQsjnc9DYowVzc6tqmMRLOtaNhiKxMeHw8l+qq+mXRUzYVLp4g==
+react-auth-provider-buttons@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/react-auth-provider-buttons/-/react-auth-provider-buttons-0.0.1.tgz#15c4288d60d5f5c286a9eade1fd0ab4632a8f3ef"
+  integrity sha512-JAehX0sG3Ckj9QyYmTNfvP96B9mf2DSkEOrVov+bhdDJ4WJk6xqi/El+V0D/MxYb1ueWxnchnNkn34rC2XAIbQ==
   dependencies:
     "@types/node" "^16.7.13"
     "@types/react" "^18.0.0"

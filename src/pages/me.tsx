@@ -1,31 +1,38 @@
-import { NextPage } from "next";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { GetServerSideProps, NextPage } from "next";
+import { Session } from "next-auth";
+import { getSession } from "next-auth/react";
 
-const Me: NextPage = () => {
-  const { data: session } = useSession();
-  const router = useRouter();
+interface Props {
+  user: Session["user"];
+}
 
-  useEffect(() => {
-    if (router.isReady) {
-      if (!session?.user) {
-        router.push("/auth/signin");
-      }
-    }
-  }, [session, router.isReady]);
-
+const Me: NextPage<Props> = ({ user }) => {
   return (
     <>
-      {session && session.user ? (
-        <pre className="m-4 p-4 bg-slate-200 rounded-md text-opacity-75">
-          {JSON.stringify(session.user, null, 2)}
-        </pre>
-      ) : (
-        "Loading"
-      )}
+      <pre className="m-4 p-4 bg-slate-200 rounded-md text-opacity-75">
+        {JSON.stringify(user, null, 2)}
+      </pre>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
+  const session = await getSession(ctx);
+  let redirect = undefined;
+
+  if (!session || !session.user) {
+    redirect = {
+      destination: "/auth/signin",
+      permanent: false,
+    };
+  }
+
+  return {
+    props: {
+      user: session?.user,
+    },
+    redirect,
+  };
 };
 
 export default Me;

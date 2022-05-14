@@ -7,10 +7,7 @@ import {
   getSession,
   LiteralUnion,
   signIn,
-  useSession,
 } from "next-auth/react";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { OAuthButton } from "react-auth-provider-buttons";
 
 interface Props {
@@ -21,19 +18,7 @@ interface Props {
   session: Session | null;
 }
 
-const SignIn: NextPage<Props> = ({ providers, session }) => {
-  const { push, isReady, query } = useRouter();
-
-  useEffect(() => {
-    if (isReady && session && session.user) {
-      if (query.callbackUrl) {
-        push(query.callbackUrl as string);
-      } else {
-        push("/me");
-      }
-    }
-  }, [isReady, session]);
-
+const SignIn: NextPage<Props> = ({ providers }) => {
   return (
     <div className="w-screen h-[456px] flex flex-col justify-start items-center pt-36 gap-8">
       <h2>Sign In</h2>
@@ -53,12 +38,24 @@ const SignIn: NextPage<Props> = ({ providers, session }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
+  const session = await getSession(ctx);
+  const params = ctx.query;
+
+  const callbackUrl = params?.callbackUrl || "/me";
+
   return {
     props: {
       providers: await getProviders(),
-      session: await getSession(),
+      session,
     },
+    redirect:
+      session && session.user
+        ? {
+            destination: callbackUrl,
+            permanent: false,
+          }
+        : false,
   };
 };
 

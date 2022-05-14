@@ -16,7 +16,7 @@ export const DesktopNav = () => {
 
   return (
     <div className="border-b-2 py-4">
-      <div className="flex justify-start items-center px-5 gap-3">
+      <div className="flex justify-start items-center px-5 gap-3 capitalize">
         {NAV_LINKS.map((each) => (
           <NavItem key={each.name} {...each} />
         ))}

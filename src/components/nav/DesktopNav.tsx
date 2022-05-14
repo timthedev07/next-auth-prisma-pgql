@@ -18,7 +18,7 @@ export const DesktopNav = () => {
     <div className="border-b-2 py-4">
       <div className="flex justify-start items-center px-5 gap-3">
         {NAV_LINKS.map((each) => (
-          <NavItem {...each} />
+          <NavItem key={each.name} {...each} />
         ))}
         {session && session.user?.name ? (
           <>

@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body h1 {
+  font-size: 3.2rem;
+}
+
+body h2 {
+  font-size: 2.4rem;
+}
+
+body h3 {
+  font-size: 2rem;
+}
+
+body h4 {
+  font-size: 1.5rem;
+}
+
+body p {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+body ul,
+ol {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
